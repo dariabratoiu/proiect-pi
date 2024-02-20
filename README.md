@@ -1,1 +1,1 @@
-Proiect pi
+Proiect pi - aplicație de monitorizare a bugetului
