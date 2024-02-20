@@ -1,0 +1,54 @@
+html{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.message.error{
+    color: red;
+}
+
+.message.success{
+    color: green;
+}
+
+.center{
+    color: bisque;
+}
+
+.formatt {
+    color: bisque;
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: center;
+}
+
+body {
+    background: #6a11cb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+
+.buton {
+    border-radius: 100px;
+    background-color: #3f3737;
+    padding: 20px; 
+    text-align: center; 
+    vertical-align: auto;   
+    font-size: medium;  
+    font-weight: 550;
+}
+a{
+    color: bisque;
+}

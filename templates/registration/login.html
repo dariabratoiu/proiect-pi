@@ -1,0 +1,135 @@
+{%extends "registration/base.html"%}
+{%block title%}Logare{%endblock%}
+
+{%block content%}
+<style>
+    div {
+        border-radius: 20px;
+        background-color: #3f3737;
+        padding: 43px;
+        color: bisque;
+
+    }
+
+    .pclass {
+        font-size: x-large;
+        text-align: center;
+    }
+
+    body {
+        background: #6a11cb;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: rgb(44, 43, 43);
+    }
+
+    .gradient-custom1 {
+        background: rgb(37, 36, 36);
+    }
+
+    .gradient-custom2 {
+        background: rgb(32, 32, 32);
+    }
+
+    button {
+        background-color: rgb(32, 32, 32);
+        border: 2px solid bisque;
+        color: bisque;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20px;
+        align-items: center;
+        width: 100%;
+        font-weight: bold;
+
+    }
+
+    button:hover {
+        background-color: bisque;
+        color: #352e2e;
+
+    }
+
+    a {
+        color: aqua;
+    }
+
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=password],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+
+
+
+<div class="center">
+
+    {%for message in messages%}
+    <div class="message {{message.tags}}">
+        {{message}}
+
+    </div>
+    {%endfor%}
+    <div class="container gradient-custom">
+        <div class="container gradient-custom1">
+            <div class="container gradient-custom2">
+                <p class="pclass">Loghează-te!</p>
+                <br>
+                <br>
+                <form method="post" action="{%url 'login'%}">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <br>
+                    <button type="submit">Logare</button>
+                </form>
+                <br>
+                <br>
+                <br>
+                <p class="pregister">Nu ai cont? Fă-ți <a href="{%url 'register'%}">aici</a>!</p>    
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+

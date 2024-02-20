@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proiectpi</title>
+
+
+</head>
+
+<body>
+    {%extends 'base.html'%}
+    {%block content%}
+
+    <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'expenses'%}">Costuri</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Editează costul
+                </li>
+              </ol>
+            </nav>
+          </div>
+      
+          <div class="col-md-2">
+            <a
+              href="{% url 'expense-delete' expense.id %}"
+              class="btn btn-danger btn-sm"
+              >Șterge</a
+            >
+          </div>
+        </div>
+      
+        <div class="card">
+          <div class="card-body">
+            <form action="{% url 'expense-edit' expense.id %}" method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="">Sumă</label>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  name="amount"
+                  value="{{values.amount}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Descriere</label>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  name="description"
+                  value="{{values.description}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Categorie</label>
+                <select class="form-control" name="category">
+                  <option selected name="category" value="{{values.category}}"
+                    >{{values.category}}</option
+                  >
+                  {% for category in categories%}
+                  <option name="category" value="{{category.name}}"
+                    >{{category.name}}</option
+                  >
+      
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Data costului</label>
+                <input
+                  type="date"
+                  value="{{values.date |date:'d-m-Y' }}"
+                  class="form-control form-control-sm"
+                  name="expense_date"
+                />
+              </div>
+      
+              <input
+                type="submit"
+                value="Save"
+                class="btn btn-primary btn-primary-sm"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    {%endblock%}
+
+</body>
+
+</html>

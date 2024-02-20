@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proiectpi</title>
+
+
+</head>
+
+<body>
+    {%extends 'base.html'%}
+
+    {%block content%}
+
+    <div class="col-11 offset-2 " id="main">
+
+        <br><br>
+        <div class="container mt-4">
+            <h5>Unitatea monetara preferata</h5>
+            <hr />
+            <form action="{% url 'preferences'%}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <select name="currency" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
+                        style="max-width:90%;" S>
+                        {% if user_preferences.currency%}
+                        <option name="currency" selected value="{{user_preferences.currency}}">{{user_preferences.currency}}</option>                        
+                        {% endif %} 
+                        
+                        {% for currency in currencies %}
+
+                        <option name="currency" value="{{currency.name}} - {{currency.value}}">{{currency.name}} -
+                            {{currency.value}}
+                        </option>
+
+                        {% endfor %}
+                    </select>
+                    <input class="btn btn-outline-secondary" type="submit" value="Save" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    {%endblock%}
+
+</body>
+
+</html>

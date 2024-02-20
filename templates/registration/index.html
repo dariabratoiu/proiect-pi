@@ -1,0 +1,74 @@
+{%extends "registration/base.html"%}
+
+{%block content%}
+
+<style>
+    .center {
+        color: bisque;
+    }
+
+    .formatt {
+        color: bisque;
+        font-weight: bold;
+        font-size: xx-large;
+        text-align: center;
+    }
+
+    body {
+        background: #6a11cb;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+
+
+    .buton {
+        border-radius: 100px;
+        background-color: #3f3737;
+        padding: 20px;
+        text-align: center;
+        vertical-align: auto;
+        font-size: medium;
+        font-weight: 550;
+    }
+
+    a {
+        color: bisque;
+    }
+</style>
+
+{%for message in messages%}
+
+<div class="message {{message.tags}}" style="color: bisque!important">
+    {{message}}
+</div>
+{%endfor%}
+<div class="center">
+    {%if user.is_authenticated%}
+    <div class="formatt">
+        <p>Bine ai venit,</p>
+        <p>{{user.username}}!</p>
+        <br>
+    </div>
+    <div class="buton">
+        <a href="{%url 'homepage'%}">Pagina principală</a>
+    </div>
+    {%else%}
+    <div class="formatt">
+        <p>Bine ai venit, utilizatorule.</p>
+        <p> Te rog să te loghezi.</p>
+        <br>
+        <div>
+            <a href="{%url 'login'%}" class="buton">Logare</a> sau <a href="{%url 'register'%}"
+                class="buton">Înregistrare</a>
+        </div>
+    </div>
+    {%endif%}
+
+</div>
+
+
+{%endblock%}

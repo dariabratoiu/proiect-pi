@@ -1,0 +1,145 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<style>
+    .page-item,
+    .page-link {
+        color: rgb(117, 23, 146);
+    }
+
+    .page-item:hover,
+    .page-link:hover {
+        background: #6a11cb;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+        color: #ffe4c4 !important;
+        ;
+    }
+</style>
+
+<div class="container mt-4">
+    <br />
+    <div class="row">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="">Venituri</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Veniturile mele</li>
+                </ol>
+            </nav>
+        </div>
+
+
+        <div class="col-md-2">
+            <a href="{% url 'add-income'%}" class="btn btn-primary">Adaugă venituri</a>
+        </div>
+    </div>
+
+    <div class="container">
+        {% if income.count %}
+
+        <div class="row">
+            
+            <div class="col-md-8"><a href="{% url 'export-excel-excel' %}" class="btn btn-primary">Descarcă EXCEL</a>
+
+                <a href="{% url 'export-csv-csv' %}" class="btn btn-secondary">Descarcă CSV</a>
+              </div>
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="searchField" placeholder="Search">
+                </div>
+            </div>
+        </div>
+
+        <div class="app-table">
+            <table class="table table-stripped table-hover">
+                <thead>
+                    <tr>
+                        <th>Suma ({{currency}})</th>
+                        <th>Sursa</th>
+                        <th>Descriere</th>
+                        <th>Dată</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for income in page_obj%}
+                    <tr>
+                      <td>{{income.amount}}</td>
+                      <td>{{income.source}}</td>
+                      <td>{{income.description}}</td>
+                      <td>{{income.date}}</td>
+              
+                      <td>
+                        <a
+                          href="{% url 'income-edit' income.id  %}"
+                          class="btn btn-secondary btn-sm"
+                          >Editare</a
+                        >
+                      </td>
+                    </tr>
+              
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+
+        <p class="no-results" style="display: none;">No results </p>
+        <div class="table-output">
+
+
+            <table class="table table-stripped table-hover">
+                <thead>
+                    <tr>
+                        <th>Suma ({{currency}})</th>
+                        <th>Sursa</th>
+                        <th>Descriere</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-body">
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-container">
+            <div class="">
+                Pagina {{page_obj.number}} din {{ page_obj.paginator.num_pages }}
+            </div>
+            <ul class="pagination align-right float-right mr-auto">
+                {% if page_obj.has_previous %}
+                <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a class="page-link" href="?page=1">&laquo; 1</a></li>
+                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Înapoi</a>
+                </li>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{page_obj.paginator.num_pages}} &raquo;</a></li>
+                {% endif %}
+
+
+            </ul>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+</div>
+
+<script src="{% static 'js/searchIncome.js' %}"></script>
+
+{%endblock%}

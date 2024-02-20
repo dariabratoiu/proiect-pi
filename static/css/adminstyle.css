@@ -1,0 +1,57 @@
+#header {
+    background: #6a11cb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    color: #ffe4c4;
+}
+
+#branding h1 {
+    color: #ffe4c4;
+}
+
+div.breadcrumbs {
+    background: rgb(255, 143, 249);
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgb(245, 37, 252), rgb(122, 3, 106));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(252, 37, 187), rgb(78, 1, 74));
+    color: #ffe4c4;
+    
+}
+
+.login .submit-row {
+    padding: 0px !important;
+}
+
+
+.submit-row input {
+    width: 100%;
+    background: #6a11cb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    color: #ffe4c4;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: rgb(78, 1, 74);
+}
+
+.main{
+    background-color: #160066;
+}
+
+.dashboard #content{
+    width: 900px;
+}
